@@ -31,7 +31,6 @@ class AnnotationsParser {
     * @return Annotation|false
     */
     private static function parseLine($line) {
-    	//echo __METHOD__."($line)\n";
     	if (empty($line) || $line[0]!=='@')
     		return false;
     	$annotationName  = '';
@@ -56,7 +55,6 @@ class AnnotationsParser {
     					$annotationName = substr($line, $i, $p);
     					$state = State::BEFOREBODY;
     					$i += $p-1;
-    					//echo "\tNAME=$annotationName\n";
     				}
     				break;
     				
@@ -69,7 +67,6 @@ class AnnotationsParser {
     					if ($p!=-1) {
     						$block = substr($line, $i, $p);
     						$i+=$p-1;
-    						//echo "\tAttr=$block\n";
     						$annotationAttrs = self::getAttributes($block);
     					} else
     						throw new ErrorException("Error parsing $annotationName annotation attributes");
