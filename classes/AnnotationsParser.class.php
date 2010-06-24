@@ -154,16 +154,23 @@ class AnnotationsParser {
     			case State::ATTRVALUE:
     				if (Lexer::isSpace($c)) continue;
     				if (Lexer::isPairingSymbol($c)) {
+    					
     					$p = self::getBraketsBlock($block, $len, $i, $c);
     					if ($p==-1)
     						$state = State::ERROR;
     					else {
-    						$attrVal = json_decode(substr($block, $i, $p));
+    						$val = substr($block, $i, $p);
+    						$attrVal = $val[0] == "'" // json_decode do not parse strings like ' ... ' 
+    							? substr($val,1,-1)
+    							: json_decode($val);
     						$i += $p-1;
     						$state = State::ATTRDONE;
     					}
     				} else { 
-    					$attrVal .= $c;
+    					// Dirty but effective way
+    					$attrVal=strtok(substr($block, $i), ' ,)');
+    					$i+=strlen($attrVal)-1;
+    					$state = State::ATTRDONE;
     				}
     				break;
     				

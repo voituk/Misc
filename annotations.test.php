@@ -5,7 +5,7 @@
 	//$t = new TestClass();
 
 	$ann = Annotations::getClassAnnotations( 'TestClass' );
-	print_r($ann['MegaAnnotation']);
+	print_r($ann);
 	
 	//new UnexistantClass();
 	
