@@ -2,8 +2,11 @@
 
 class AnnotationsParser {
 
+	/**
+	* @return ArrayObject - List of annotations found
+	*/
 	public static function parse($text) {
-		$r = array();
+		$r = new ArrayObject();
 		foreach(explode("\n", $text) as $line) {
 			$line = trim($line);
 	

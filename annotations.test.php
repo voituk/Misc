@@ -5,7 +5,8 @@
 	//$t = new TestClass();
 
 	$ann = Annotations::getClassAnnotations( 'TestClass' );
-	print_r($ann);
+	$ann->setFlags(ArrayObject::ARRAY_AS_PROPS);
+	print_r($ann->MegaAnnotation);
 	
 	//new UnexistantClass();
 	
