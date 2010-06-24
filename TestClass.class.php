@@ -2,7 +2,8 @@
 
 /**
 * This is just a etst object 
-* used for 
+* used for
+* 
 * @Entity
 * @Table(name="tests") --hello
 * @MegaAnnotation   (  list=[10,20,30,40], hash={"name": "He\"l}lo", "surname": "M\to)o"}) garbage
@@ -10,8 +11,16 @@
 */
 class TestClass  {
 	
+	/**
+	* @Id
+	* @var(type=int)
+	*/
+	private $id;
+
 	public function __construct() {
 		var_dump(__METHOD__);
 	}
+
+	
 
 }
