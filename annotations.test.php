@@ -10,7 +10,3 @@
 	
 	$pann = Annotations::getPropertyAnnotations('User', 'name');
 	
-	//new UnexistantClass();
-	
-	//$s = '{"name": "Hel}lo", "surname": "M\tot)o"}';
-	//var_dump(json_decode($s));
