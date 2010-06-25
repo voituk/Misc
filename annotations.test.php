@@ -8,6 +8,8 @@
 	$ann->setFlags(ArrayObject::ARRAY_AS_PROPS);
 	print_r($ann->MegaAnnotation);
 	
+	$pann = Annotations::getPropertyAnnotations('User', 'name');
+	
 	//new UnexistantClass();
 	
 	//$s = '{"name": "Hel}lo", "surname": "M\tot)o"}';
