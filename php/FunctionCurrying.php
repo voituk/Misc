@@ -2,7 +2,7 @@
 
 class Func {
 
-	public static function carry($callable, $arg1) {
+	public static function curry($callable, $arg1) {
 		if (!is_callable($callable))
 			throw new RuntimeException(__METHOD__.': 1st argument should be callable. See is_callable() for more info.');
 
@@ -25,8 +25,8 @@ class Func {
 		return $a + $b;
 	};
 
-	$inc10 = Func::carry($f, 10);
-	$inc20 = Func::carry('add', 20);
+	$inc10 = Func::curry($f, 10);
+	$inc20 = Func::curry('add', 20);
 
 	print_r($inc10);
 	print_r($inc20);
