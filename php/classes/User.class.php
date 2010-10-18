@@ -1,4 +1,5 @@
 <?php
+/*mente was here*/
 /**
 * Just another test class used for annotation engine testing
 * @author Vadim Voituk
