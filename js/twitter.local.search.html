@@ -1,0 +1,69 @@
+<style type="text/css">
+
+#tweets div {
+	display: block;
+	float: none;
+	clear: both;
+	margin-bottom: 10px;
+	border-top: 1px dotted #ebebeb;
+}
+
+#tweets a.name {
+	color: darkblue;
+	font-weight: bold;
+}
+
+#tweets div span {
+	font-size: small;
+	color: #aaa;
+	display: block;
+}
+
+#tweets div img {
+	float: left;
+}
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	
+	var refresh_url = null,
+		in_progress = false
+		
+	setTimeout(function() {
+		
+		if (!in_progress) {
+		
+			var url = "http://search.twitter.com/search.json"+(refresh_url || '?')+"&geocode=36.51666670,-4.88333330,10km"
+			console.log('GET: ' + url)
+			
+			in_progress = true
+			$.getJSON(url, function(data) {
+				console.log(data)
+				refresh_url = data.refresh_url;
+				$.each(data.results, function(i, it) {
+					$('<div>').html(
+						'<img src="'+it.profile_image_url+'" />'+
+						'<a href="http://twitter.com/'+it.from_user+'" class="name">'+it.from_user+'</a> '+it.text+
+						'<span>'+it.created_at+' | '+it.location+'</span> lang:'+it.iso_language_code
+						
+					).hide().prependTo('#tweets').slideDown()
+				})
+				in_progress = false
+			})
+		}
+		
+		setTimeout(arguments.callee, 2000);
+			
+	}, 5)
+	
+})
+
+</script>
+
+<div id="tweets">
+</div>
+
+
