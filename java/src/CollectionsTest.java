@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CollectionsTest {
 
-	public static <F,T> List<T> map(List<F> list, Function1<F,T> func) {
+	public static <F,T> List<T> map(List<F> list, Function1< ? super F, ? extends T> func) {
 		List<T> res = new ArrayList<T>();
 		for (F f : list)
 			res.add(func.call(f));
