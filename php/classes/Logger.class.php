@@ -1,9 +1,7 @@
 <?php
   /**
   * Logger system class
-  * @author Vadim Voituk <vadim@dgtop.com.ua, vadim@asg.kiev.ua>
-  * @version $Id: Logger.class.php,v 1.1 2006/03/30 12:55:49 vadim Exp $
-  * start: Thu Mar 23 15:32:08 EET 2006 @605 /Internet Time/
+  * @author Vadim Voituk <vadim at voituk.com>
   */
 
   class Logger {
