@@ -1,9 +1,14 @@
 #!/opt/local/bin/node
 /* vim: set filetype=javascript : */
 /*
-Usage example: 
+Usage examples:
+
+	1. Read stdin
+	
 	echo '{"name":"Vadim","surname":"Voituk","blog":"http://voituk.kiev.ua/","twitter":"http://twitter.com/voituk","linkedin":"http://www.linkedin.com/in/voituk","location":{"city":"Kiev","country":"Ukraine","latitude":50.4333333,"longitude":30.5166667},"friends":["Juriy Bura","Denis Derevyanchuk","Andrew Danilik","Stelya Igor"]}' \
 	| ./jsonlint
+	
+	2.  curl "http://search.twitter.com/search.json?q=@voituk" | jsonlint  | less
 */
 try {
 	process.stdin.resume();
