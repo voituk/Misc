@@ -1,0 +1,25 @@
+#!/opt/local/bin/node
+/* vim: set filetype=javascript : */
+/*
+Usage example: 
+	echo '{"name":"Vadim","surname":"Voituk","blog":"http://voituk.kiev.ua/","twitter":"http://twitter.com/voituk","linkedin":"http://www.linkedin.com/in/voituk","location":{"city":"Kiev","country":"Ukraine","latitude":50.4333333,"longitude":30.5166667},"friends":["Juriy Bura","Denis Derevyanchuk","Andrew Danilik","Stelya Igor"]}' \
+	| ./jsonlint
+*/
+try {
+	process.stdin.resume();
+	process.stdin.setEncoding('utf8');
+	
+	var input = ''
+	process.stdin.on('data', function (chunk) {
+		input += chunk
+	})
+
+	process.stdin.on('end', function () {
+		process.stdout.write(JSON.stringify(JSON.parse(input), null, 4) + '\n')
+	})
+
+} catch (e) {
+	process.stderr.write(e.stack + "\n")
+	process.exit(1)
+}
+
