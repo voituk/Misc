@@ -9,6 +9,8 @@ Usage examples:
 	| ./jsonlint
 	
 	2.  curl "http://search.twitter.com/search.json?q=@voituk" | jsonlint  | less
+	
+	3. curl -s "http://api.twitter.com/1/users/show/voituk.json" | jsonlint  | less
 */
 try {
 	process.stdin.resume();
