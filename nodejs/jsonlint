@@ -1,4 +1,4 @@
-#!/opt/local/bin/node
+#!/usr/bin/env node
 /* vim: set filetype=javascript : */
 /*
 Usage examples:
@@ -12,6 +12,8 @@ Usage examples:
 	
 	3. curl -s "http://api.twitter.com/1/users/show/voituk.json" | jsonlint  | less
 */
+var util = require('util');
+
 try {
 	process.stdin.resume();
 	process.stdin.setEncoding('utf8');
@@ -22,7 +24,8 @@ try {
 	})
 
 	process.stdin.on('end', function () {
-		process.stdout.write(JSON.stringify(JSON.parse(input), null, 4) + '\n')
+		//process.stdout.write(JSON.stringify(JSON.parse(input), null, 4) + '\n')
+		process.stdout.write(util.inspect(JSON.parse(input), true, null, true) + "\n" )
 	})
 
 } catch (e) {
