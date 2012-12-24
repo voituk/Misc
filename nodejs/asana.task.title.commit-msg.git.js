@@ -1,5 +1,22 @@
 #!/usr/bin/env node
 
+/**
+* Simple GIT commit-msg hook, that inserts Asana ticket title next to ticket ID.
+
+* For example, after running "git commit" like:
+*	git commit -a -m "Commit message with ticket #1217261"
+* The commit message will be changed to
+*	"Commit message with ticket #1217261(Title of tiket 1217261 in Asana)"
+* 
+* Configuration: 
+*	0. Install node.js if you do not have it installed yet
+*	1. Get you Asana API key in your "Account Settings"
+*	2. Put this key to git config file: 
+*		git config -g "user.asana-key"  "...put-your-key-here..."
+*	3. Copy this file into .git/config/commit-msg of your git repo
+*	4. Enjoy
+*/
+
 var fs    = require('fs'),
 	https = require('https'),
 	util  = require('util'),
