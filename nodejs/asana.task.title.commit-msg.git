@@ -20,7 +20,7 @@ if (match && match[1]) {
 }
 
 if (taskId) {
-	console.log("Found Asana taskId #"+taskId);
+	console.log("Found ticket ID #"+taskId);
 	detectAsanaKey(function(err, asanaKey){
 		https.get(
 			{
@@ -29,9 +29,13 @@ if (taskId) {
 				"auth":     asanaKey + ":"
 			}, 
 			function(res) {
+				if (res.statusCode != 200) {
+					console.log("Ticket #" + taskId + " not found via Asana API")
+					return;
+				}
+
 				var body = "";
-				res
-					.on("data", function(data) { body += data })
+				res.on("data", function(data) { body += data })
 					.on("end", function() {
 						var json = JSON.parse(body);
 						var newmessage = message.replace(/\{TASKID\}/, "#" + taskId + "(" + json.data.name + ")");
