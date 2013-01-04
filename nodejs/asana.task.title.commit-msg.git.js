@@ -12,7 +12,7 @@
 *	0. Install node.js if you do not have it installed yet
 *	1. Get you Asana API key in your "Account Settings"
 *	2. Put this key to git config file: 
-*		git config -g "user.asana-key"  "...put-your-key-here..."
+*		git config --global "user.asana-key"  "...put-your-key-here..."
 *	3. Copy this file into .git/config/commit-msg of your git repo
 *	4. Enjoy
 */
