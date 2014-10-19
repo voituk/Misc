@@ -15,6 +15,10 @@
 *		git config -g "user.asana-key"  "...put-your-key-here..."
 *	3. Copy this file into .git/config/commit-msg of your git repo
 *	4. Enjoy
+*
+* TODO: 
+* - Detect Asana TaskID from URL (http://app.asana...)
+* - Prevent from task title double adding (during rebase, --amend, etc)
 */
 
 var fs    = require('fs'),
