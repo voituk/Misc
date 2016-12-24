@@ -16,6 +16,7 @@
 		
 		private $lockDir;
 		private $lockId;
+		private $autoRelease;
 		
 		/**
 		* @param bool Specify if lock should be released automatically on normal process shutdown 
@@ -23,6 +24,7 @@
 		public function __construct($lockId, $lockDir=null, $autoRelease=true) {
 			$this->lockId  = $lockId;
 			$this->lockDir = $lockDir ?: self::DEFAULT_LOCK_DIR;
+			$this->autoRelease = $autoRelease;
 			if ($this->autoRelease)
 				register_shutdown_function(array($this, 'release'));
 		}
@@ -36,7 +38,7 @@
 			if (!is_file($f))
 				return false;
 			$pid = trim( file_get_contents($f) );
-			$find = trim(`ps -p $pid -o pid=`);
+			$find = shell_exec("ps -p $pid -o pid=");
 			return !empty($find);
 		}
 		
